@@ -1,0 +1,25 @@
+
+<main>
+
+  <div class="sty1">
+
+    <div class="sty2 mt-2">
+
+      <div class="sty3">
+        <input *ngIf="isshow" class="sty4" type="text" name="text" placeholder="enter text..." [(ngModel)]="texts">
+        <button *ngIf="isshow" (click)="addtext()" class="btn btn-success d-flex align-items-center justify-cuntent-center"><span class="material-icons">add</span></button>
+        <input *ngIf="!isshow" class="sty4" type="text" name="text" value="texts" [(ngModel)]="texts">
+        <button *ngIf="!isshow" (click)="edittext()" class="btn btn-success d-flex align-items-center justify-cuntent-center"><span class="material-icons">edit</span></button>
+      </div>
+
+  <div class="sty6">
+    <div *ngFor="let item of items;let i=index" class="sty5 mt-4">
+      <p class="mt-3">{{item}}</p> <span style="margin-left: 120px;" (click)="edit(i)"  class="material-icons sty7">edit</span><span (click)="delete(i)" style="margin-left: 15px;" class="material-icons sty8">delete</span>
+    </div>
+  </div>
+  </div>
+    
+
+  </div>
+  <router-outlet></router-outlet>
+</main>
