@@ -10,11 +10,11 @@ export class ListComponent {
   showPopup = false;
   formData: any = {};
   dataArray:any[]=[]
-  search=''
+  searchval=""
+  isedit=false
+  i=0
 
   togglePopup() {
-    console.log('syye');
-    
     
     this.showPopup = true
     console.log(this.showPopup);
@@ -25,6 +25,7 @@ export class ListComponent {
     this.formData.email=""
     this.formData.name=""
     this.showPopup = false;
+    this.isedit=false
   }
 
   submitForm() {
@@ -40,4 +41,25 @@ export class ListComponent {
     this.closePopup()
   }
 
+  editfun(i:number){
+    this.togglePopup()
+    this.isedit=true
+   this.formData.name= this.dataArray[i].name
+  this.formData.email=this.dataArray[i].email
+  this.i=i
+  }
+
+  editconform(){
+    if(this.formData.email=="" || this.formData.name===""){
+      alert("please fill ...!")
+      return
+    }
+    this.dataArray[this.i].name=this.formData.name
+    this.dataArray[this.i].email=this.formData.email
+    this.closePopup()
+  }
+
+  deletefun(i:number){
+    this.dataArray.splice(i, 1)
+  }
  }
